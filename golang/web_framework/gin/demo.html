@@ -1,0 +1,37 @@
+<!-- <<!DOCTYPE html> -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>xhr</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="" /> -->
+    <!-- <script src=""></script> -->
+</head>
+<body>
+    <div>
+        <p>Hello</p>
+    </div>
+</body>
+<script>
+    var xhr = new XMLHttpRequest;
+    xhr.open('GET','http:localhost:8080/ping',true);
+    //open(method,url,async)
+    /**
+     * 规定请求的类型、URL 以及是否异步处理请求。
+     *      method：请求的类型；GET 或 POST
+     *      url：文件在服务器上的位置
+     *      async：true（异步）或 false（同步）
+    */
+    xhr.send();
+    
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status == 200){
+            var data = xhr.responseText;
+
+            data = JSON.parse(data);
+            console.log(data);
+        }
+    }
+</script>
+</html>
